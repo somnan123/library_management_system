@@ -11,6 +11,7 @@ BooksController.prototype.get = async (req, res) => {
          if (err) {
             throw new Error("Error executing query.");
          }
+         console.log(books);
 
          res.status(200).json({
             books: books,

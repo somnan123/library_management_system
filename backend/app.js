@@ -6,8 +6,8 @@ const cors = require('cors');
 const db = require('./configs/db'); // Import the db connection
 
 const app = express();
-
 app.use(cors());
+
 app.use(bodyParser.json());
 
 db.connect((err) => {
@@ -19,6 +19,6 @@ db.connect((err) => {
 });
 
 // Add your routes here
-app.use('/api', routes);
+app.use('/', routes);
 
 module.exports = app;

@@ -9,7 +9,7 @@ import { Author } from './models/Author';
 import { AddEditAuthorModal } from './components/AddEditAuthorModal';
 import { ViewAuthorModal } from './components/ViewAuthorModal';
 import { DeleteAuthorModal } from './components/DeleteAuthorModal';
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = "http://localhost:3200";
 
 const columns = [
    {

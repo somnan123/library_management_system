@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "pm2 start server.js --interpreter node"
   },
@@ -15,6 +15,7 @@
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "mysql2": "^3.10.0"
+    "mysql2": "^3.10.0",
+    "nodemon": "^3.1.9"
   }
 }

@@ -10,7 +10,7 @@ AuthorsController.prototype.get = async (req, res) => {
          if (err) {
             throw new Error("Error executing query.");
          }
-
+         console.log(authors);
          res.status(200).json({
             authors: authors,
          });

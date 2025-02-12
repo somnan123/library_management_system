@@ -10,7 +10,7 @@ import { ViewBookModal } from './components/ViewBookModal';
 import { DeleteBookModal } from './components/DeleteBookModal';
 import { Book, BookDTO, BookFormDTO } from './models/Books';
 import { Author } from './models/Author';
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = 'http://localhost:3200';
 
 const columns = [
   {
@@ -81,28 +81,29 @@ function BooksPage() {
   const fetchBooks = async () => {
     try {
       const response = await fetch(`${API_URL}/books`);
-      const { books, message } = await response.json();
-
-      if (!response.ok) {
-        throw new Error(message);
+  
+      // Check if response is actually JSON
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error("Server returned an invalid response.");
       }
-
+  
+      const { books, message } = await response.json();
+      if (!response.ok) throw new Error(message);
+  
       setBooks(books);
     } catch (error) {
-      console.log(error);
-
+      console.error("Fetch Books Error:", error);
       setMessage((error as Error).message);
       setIsErrorAlertVisible(true);
-
-      setTimeout(() => {
-        setIsErrorAlertVisible(false);
-      }, 5000);
     }
   };
+  
 
   const fetchAuthors = async () => {
     try {
       const response = await fetch(`${API_URL}/authors`);
+      console.log(response);
       const { authors, message } = await response.json();
 
       if (!response.ok) {
